@@ -20,11 +20,6 @@
     	    var img = new Image();
     	    img.src = "resources/assets/images/gyeonggi-do.png"; 
     	    
-    		img.onload = function() {
-		        ctx.drawImage(img, 0, 0, 467, 550); // 이미지를 Canvas에 그립니다.
-		    };
-
-    	    
     		// 파주시 좌표
     		var lat = 37.7598688;
     		var lng = 126.7801781;
@@ -41,12 +36,17 @@
 
     		// 좌표값을 픽셀 위치로 변환
     		var point = convertLatLngToPoint(lat, lng, mapWidth, mapHeight, latNorth, lngWest, latSouth, lngEast);
-
-    		// 픽셀 위치를 출력
     		console.log("지도 이미지에서의 위치: x=" + point.x + ", y=" + point.y);
 
-    	}
+    		img.onload = function() {
+		        ctx.drawImage(img, 0, 0, 467, 550); // 이미지를 Canvas에 그립니다.
+		        ctx.fillStyle = "red";
+		        ctx.beginPath();
+		        ctx.arc(point.x, point.y, 5, 0, 2*Math.PI);
+		        ctx.fill();
+		    };
 
+    	}
     </script>
 </head>
  <!-- <body onload="init();" bgcolor="white" class="back">
