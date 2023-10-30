@@ -6,17 +6,6 @@
 	<meta charset="EUC-KR">
 	<title>Insert title here</title>
 	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-    <style>
-        .back {
-            width: 1000;
-            height: 1000;
-            background-image: url(resources/assets/images/test.png);
-            /* background-image: url(resources/assets/images/gyeonggi-do.png); */
-            background-size: contain;
-            background-repeat: no-repeat;
-        }
-    </style>
-    
     <script type="text/javascript">
     	function convertLatLngToPoint(lat, lng, mapWidth, mapHeight, latNorth, lngWest, latSouth, lngEast) {
     	  	var x = (lng - lngWest) * (mapWidth / (lngEast - lngWest));
@@ -25,7 +14,17 @@
     	}
 
     	function init() {
-    		
+    		var canvas = document.getElementById("myCanvas");
+    	    var ctx = canvas.getContext("2d");
+
+    	    var img = new Image();
+    	    img.src = "resources/assets/images/gyeonggi-do.png"; 
+    	    
+    		img.onload = function() {
+		        ctx.drawImage(img, 0, 0, 467, 550); // 이미지를 Canvas에 그립니다.
+		    };
+
+    	    
     		// 파주시 좌표
     		var lat = 37.7598688;
     		var lng = 126.7801781;
@@ -60,6 +59,6 @@
     
     <!-- <img alt="" src="resources/assets/images/gyeonggi-do.png"> -->
     
-    <canvas id="mapCanvas" style="width:467px; height:500px; "></canvas>
+	<canvas id="myCanvas" width="467" height="550"></canvas>
 </body>
 </html>
