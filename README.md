@@ -1,4 +1,4 @@
-# kaia-backend
+# sprintboot-canvas-template
 
 경기도 지역의 이미지파일과 실제 좌표값을 이용하여 canvas 위에 행정구역마다 동그라미 그리기
 
